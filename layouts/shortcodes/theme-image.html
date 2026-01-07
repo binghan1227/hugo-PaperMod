@@ -1,0 +1,26 @@
+{{- $light := .Get "light" -}}
+{{- $dark := .Get "dark" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+{{- $width := .Get "width" -}}
+{{- $height := .Get "height" -}}
+{{- $loading := .Get "loading" | default "lazy" -}}
+
+{{- if and $light $dark -}}
+<span class="theme-image-container{{ with $class }} {{ . }}{{ end }}">
+    <img class="theme-image-light"
+         src="{{ $light }}"
+         alt="{{ $alt }}"
+         {{- with $width }} width="{{ . }}"{{ end -}}
+         {{- with $height }} height="{{ . }}"{{ end -}}
+         loading="{{ $loading }}">
+    <img class="theme-image-dark"
+         src="{{ $dark }}"
+         alt="{{ $alt }}"
+         {{- with $width }} width="{{ . }}"{{ end -}}
+         {{- with $height }} height="{{ . }}"{{ end -}}
+         loading="{{ $loading }}">
+</span>
+{{- else -}}
+{{- errorf "theme-image shortcode requires both 'light' and 'dark' parameters" -}}
+{{- end -}}

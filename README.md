@@ -26,6 +26,52 @@
 
 ---
 
+## Custom Fork Features 🎨
+
+This fork includes additional features not present in the original PaperMod theme:
+
+### Dark Mode Image Switching
+
+Automatic image switching for light/dark theme modes. Display different versions of images based on the active theme.
+
+**Usage in Markdown:**
+
+```markdown
+{{< theme-image
+    light="/images/diagram-light.png"
+    dark="/images/diagram-dark.png"
+    alt="System diagram"
+>}}
+```
+
+**Optional Parameters:**
+- `width` - Image width
+- `height` - Image height
+- `class` - Additional CSS classes (e.g., `full-width` for responsive images)
+- `loading` - Loading strategy (defaults to `lazy`)
+
+**Example with Options:**
+
+```markdown
+{{< theme-image
+    light="/images/screenshot-light.png"
+    dark="/images/screenshot-dark.png"
+    alt="Dashboard screenshot"
+    width="800"
+    class="full-width"
+>}}
+```
+
+**Direct HTML Usage:**
+
+```html
+<span class="theme-image-container">
+    <img class="theme-image-light" src="/images/light.png" alt="Description">
+    <img class="theme-image-dark" src="/images/dark.png" alt="Description">
+</span>
+```
+---
+
 ## Features/Mods 💥
 
 -   Uses Hugo's asset generator with pipelining, fingerprinting, bundling and minification by default.

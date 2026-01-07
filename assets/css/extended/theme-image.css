@@ -1,0 +1,51 @@
+/* Theme-aware image switching */
+.theme-image-container {
+    display: inline-block;
+    position: relative;
+}
+
+.theme-image-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Hide dark image in light theme (default) */
+:root[data-theme="light"] .theme-image-dark,
+.theme-image-dark {
+    display: none;
+}
+
+/* Hide light image in dark theme */
+:root[data-theme="dark"] .theme-image-light {
+    display: none;
+}
+
+/* Show dark image in dark theme */
+:root[data-theme="dark"] .theme-image-dark {
+    display: block;
+}
+
+/* Handle "auto" theme mode - defaults to light */
+:root[data-theme="auto"] .theme-image-dark {
+    display: none;
+}
+
+:root[data-theme="auto"] .theme-image-light {
+    display: block;
+}
+
+/* Optional: smooth transition when theme changes */
+.theme-image-container img {
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Optional: responsive full-width images */
+.theme-image-container.full-width {
+    display: block;
+    width: 100%;
+}
+
+.theme-image-container.full-width img {
+    width: 100%;
+}
